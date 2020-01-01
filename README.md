@@ -34,4 +34,24 @@ Based on the customer traits and the features of the service plan following obse
 1. Senior citizens have more churning, with most of them under a monthly service plan. 
 2. Customers with partners and/or dependants prefer a yearly contracts and have less churning.
 3. 69% of churned customers have opted for an Fiber optice service as compared to 24.5% of the churned customers with DSL services. This indicates a lacking internet service provision with Fiber optic either due to infrastructure availability or poor bandwidths. 
+4. Total charges is a linearly related to Monthly charges and Tenure.
+5. Customers with a higher monthly charges but with a lifetime of less than one year have higher chances of Churning out.
+
+## Modelling 
+
+This notebook includes some of the data modification and feature engineering methods. The modified data is put through 3 models developed using  
+* Logistic Regression (This is a binary classification problem, to predict whether a customer churns(1) or does not churn (0). A logistitc regression would be the simplest to work with) 
+* KNN (This is a simple parametric model and this can be considered as a baseline too) 
+* Random forest (Random forest would be defintely helpful to evaluate if the required features are getting the importance).
+
+### Data preprocessing
+
+### Feature Engineering
+
+### Models metrics
+
+### Evaluating the models
+
+### Hypertuning
+
 
