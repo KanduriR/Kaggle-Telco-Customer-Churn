@@ -5,28 +5,15 @@ For this customer classification churn project, I analyzed a telecom customer da
 
 ## EDA
 Each data entry have some features to describe characteristics of the customer itself - 
- * Gender 
- * Senior citizen 
- * Partners
- * Dependents
+ - Gender  - Senior citizen or not  - customer has an immediate family member (dependants/partner)
  
 In addition each entry, had further details about the features of the service plan taken.
-* Tenute - (months the customer is with the company)
-* Phoneservice (Yes/No)
-* Multiplelines (if a Phonservice is taken) (Yes/No/No Phoneservice)
-* Internetservice (indicating type of internet source - DSL/Fiber optice/None)
-* Additional features that can be opted provided there is internet service 
-    * Online security
-    * Online backup
-    * Device protection
-    * Tech support
-    * StreamingTV
-    * streaming Movies
-* Contract (Monthly/ Yearly/ 2 years)
-* Paperlessbilling (Yes/No)
-* Payment Method
-* Monthly charges
-* Total charges
+* Months the customer is with a company (Tenure)
+* If they have taken a home phone service and if it is a multiple lines.
+* Internet service and any other additionall services with it (backup, protection, streaming)
+* Type of contract 
+* Charges for the services opted for
+* Modes of payment.
 
 Most of the features are Categorical in the data set. As such general desriptive statiscs like mean , median can be only applied for Tenure, and the charges. 
 
@@ -39,16 +26,23 @@ Based on the customer traits and the features of the service plan following obse
 
 ## Modelling 
 
-This notebook includes some of the data modification and feature engineering methods. The modified data is put through 3 models developed using  
+First the data is preprocessed and few features are engineered based on the EDA. The modified data is put through 3 models developed using 
 * Logistic Regression (This is a binary classification problem, to predict whether a customer churns(1) or does not churn (0). A logistitc regression would be the simplest to work with) 
 * KNN (This is a simple parametric model and this can be considered as a baseline too) 
 * Random forest (Random forest would be defintely helpful to evaluate if the required features are getting the importance).
 
 ### Data preprocessing
+Tenure (in months) is replaced to Tenure_in_yrs, as the average tenure of non churning customers was observed to be more than an year.
+Similarly monthly charges has been replaced to be in 100's of $ changing the range from 0-1. Similarly total charges is also changed to 1000's of dollars. 
+In the function __*transform_categorical_data*__, all the dichotomous features are converted with *LabelEncoder()* and for other categorical variables pandas *get_dummies()* is used. 
+Dropping of the customer id, the size of the data for modelling is 7043 X 24 as compared to 7043 X 21. 
 
 ### Feature Engineering
+To reduce the number of features, customers with a *family*  (either partner or dependants) was created, as there is no additional features to indicate specifically for only partner / dependants .
+This can be also performed with streaming TV, streaming Movies to be modified to a general streaming services if one of them doesnt have a significant impact on the target.
 
 ### Models metrics
+
 
 ### Evaluating the models
 
